@@ -1,10 +1,14 @@
-import {FETCH_TODOS} from '../actions/types';
+import {
+  ADD_TODO
+} from '../../constants/action-types';
 
-export default (state = {}, action) => {
-  switch(action.type) {
-    case FETCH_TODOS:
+const data = (state={}, action) => {
+  switch (action.type) {
+    case ADD_TODO:
       return action.payload;
     default:
       return state;
   }
 };
+
+export default data;

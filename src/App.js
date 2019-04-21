@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+// COMPONENTS
+import Input from './components/Input';
 // CSS
-import './App.css';
-import logo from './logo.svg';
+import './App.sass';
+import * as actions from './redux/actions';
+// import { addTodo } from './redux/actions';
+
 
 
 function App (props) {
+  const [value, setValue] = useState(null);
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit');
+    props.addTodo(value);
+  };
+  const handleValue = value => {
+    setValue(value);
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
+        <form onSubmit={e => handleSubmit(e)}>
+          <Input type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={handleValue} />
+        </form>
       </header>
     </div>
   )
 }
 
-export default App;
+export default connect(null, actions)(App);
