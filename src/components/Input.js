@@ -29,6 +29,7 @@ function Input(props) {
           name={name}
           placeholder={placeholder}
           autoComplete={autocomplete !== undefined ? autocomplete : ''}
+
           onChange={e => handleValue(e.target.value)}
         />
       </label>
