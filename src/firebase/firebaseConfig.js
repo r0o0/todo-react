@@ -1,17 +1,17 @@
-import * as firebase from 'firebase';
-
-const env = process.env;
+// eslint-disable-next-line import/no-extraneous-dependencies
+import firebase from 'firebase';
 
 const config = {
-  apiKey: env.REACT_APP_FIREBASE_APIKEY,
-  authDomain: env.REACT_APP_FIREBASE_AUTHDOMAIN,
-  databaseURL: env.REACT_APP_FIREBASE_DATABASEURL,
-  projectId: env.REACT_APP_FIREBASE_PROJECTID,
-  storageBucket: env.REACT_APP_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: env.REACT_APP_FIREBASE_SENDERID
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID,
 };
 
 firebase.initializeApp(config);
 
 // DATABASE
+// eslint-disable-next-line import/prefer-default-export
 export const db = firebase.database();
