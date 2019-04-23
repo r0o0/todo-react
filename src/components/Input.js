@@ -18,11 +18,6 @@ const Input = React.forwardRef((props, ref) => {
   const handleValue = (newValue) => {
     value(newValue.trim());
   };
-  // const textInput = React.createRef();
-  // useEffect(() => {
-  //   textInput.current.focus();
-  //   console.log(textInput);
-  // });
   return (
     <Fragment>
       <label className={`label ${classname}`} htmlFor={name}>
@@ -59,4 +54,3 @@ Input.propTypes = {
 };
 
 export default Input;
-

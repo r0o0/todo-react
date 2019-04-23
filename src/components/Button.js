@@ -6,9 +6,15 @@ function Button(props) {
     classname,
     type,
     value,
+    handleClick,
   } = props;
   return (
-    <input className={classname} type={type} value={value} />
+    <input
+      className={classname}
+      type={type}
+      value={value}
+      onClick={handleClick}
+    />
   );
 }
 
@@ -21,6 +27,7 @@ Button.propTypes = {
   classname: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Button;

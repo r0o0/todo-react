@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import Input from '../Input';
 import Button from '../Button';
+// UTILS
+import { todayFullDate } from '../../utils/dateUtil';
 // ACTIONS
 import * as actions from '../../redux/actions';
 // CSS
@@ -12,14 +14,11 @@ import './TodoForm.sass';
 function TodoForm(props) {
   // STATE
   const initialState = {
-    data: {
-      todo: null,
-      category: null,
-      description: null,
-      due_on: null,
-      created_on: new Date().toString(),
-    },
-    ref: null,
+    todo: null,
+    category: null,
+    description: null,
+    due_on: null,
+    created_on: todayFullDate,
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
@@ -36,7 +35,16 @@ function TodoForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { addTodo } = props;
-    addTodo(state.data);
+    addTodo(state);
+  };
+  // Date Button
+  const handleDate = () => {
+    setState({
+      due_on: todayFullDate,
+    });
+  };
+  // TO CHANGE LATER
+  const checkSubmit = () => {
   };
 
   return (
@@ -44,8 +52,8 @@ function TodoForm(props) {
       <form onSubmit={e => handleSubmit(e)}>
         <Input classname="todo_input" type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} ref={focusOnLoad} />
         <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
-        <Button value="Today" />
-        <Button type="submit" value="Submit" />
+        <Button value="Today" handleClick={handleDate} />
+        <Button type="submit" value="Submit" handleClick={checkSubmit} />
       </form>
     </div>
   );
