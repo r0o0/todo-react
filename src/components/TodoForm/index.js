@@ -10,6 +10,7 @@ import * as actions from '../../redux/actions';
 import './TodoForm.sass';
 
 function TodoForm(props) {
+  // STATE
   const initialState = {
     data: {
       todo: null,
@@ -23,15 +24,20 @@ function TodoForm(props) {
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
 
+  // HOOKS
+  // When component loads focus on todo input
+  const focusOnLoad = React.createRef();
+  useEffect(() => {
+    window.addEventListener('load', () => focusOnLoad.current.focus());
+  });
+
+  // EVENTS
+  // Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
     const { addTodo } = props;
     addTodo(state.data);
   };
-  const focusOnLoad = React.createRef();
-  useEffect(() => {
-    window.addEventListener('load', () => focusOnLoad.current.focus());
-  });
 
   return (
     <div className="form_wrapper">
