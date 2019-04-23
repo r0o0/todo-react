@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // CSS
 import './Input.sass';
 
-function Input(props) {
+const Input = React.forwardRef((props, ref) => {
   const {
     type,
     name,
@@ -18,24 +18,29 @@ function Input(props) {
   const handleValue = (newValue) => {
     value(newValue.trim());
   };
+  // const textInput = React.createRef();
+  // useEffect(() => {
+  //   textInput.current.focus();
+  //   console.log(textInput);
+  // });
   return (
     <Fragment>
       <label className={`label ${classname}`} htmlFor={name}>
         {label}
         <input
+          ref={ref}
           className={`input ${classname}`}
           type={type}
           id={name}
           name={name}
           placeholder={placeholder}
           autoComplete={autocomplete !== undefined ? autocomplete : ''}
-
           onChange={e => handleValue(e.target.value)}
         />
       </label>
     </Fragment>
   );
-}
+});
 
 Input.defaultProps = {
   placeholder: '',
@@ -54,3 +59,4 @@ Input.propTypes = {
 };
 
 export default Input;
+
