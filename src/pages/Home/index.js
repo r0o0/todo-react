@@ -1,15 +1,21 @@
 import React from 'react';
+// COMPONENTS
+import TodoList from '../../components/TodoList';
 // UTILS
-import { todayDate } from '../../utils/dateUtil';
+import { todayDate, todayMonth } from '../../utils/dateUtil';
+// CSS
+import './Home.sass';
 
 function Home() {
+  const date = `${todayMonth} ${todayDate}`;
   return (
     <div className="container">
       <header>
-        <h1>
+        <h1 className="header_title">
           Today
-          <span>{todayDate}</span>
+          <span className="header_date">{date}</span>
         </h1>
+        <TodoList />
       </header>
     </div>
   );

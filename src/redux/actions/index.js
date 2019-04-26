@@ -1,5 +1,6 @@
 import {
   ADD_TODO,
+  FETCH_TODO,
 } from '../../constants/action-types';
 import { db } from '../../firebase/firebaseConfig';
 
@@ -16,7 +17,16 @@ const addTodo = newTodo => async (dispatch) => {
   db.ref().child('todos').push().set(newTodo);
 };
 
+const fetchTodos = () => async (dispatch) => {
+  db.ref().child('todos').on('value', (snapshot) => {
+    dispatch({
+      type: FETCH_TODO,
+      payload: snapshot.val(),
+    });
+  });
+};
+
 export {
-  // eslint-disable-next-line import/prefer-default-export
   addTodo,
+  fetchTodos,
 };

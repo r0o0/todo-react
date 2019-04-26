@@ -1,3 +1,8 @@
 // TODO
-// eslint-disable-next-line import/prefer-default-export
-export const ADD_TODO = 'ADD_TODO';
+const ADD_TODO = 'ADD_TODO';
+const FETCH_TODO = 'FETCH_TODO';
+
+export {
+  ADD_TODO,
+  FETCH_TODO,
+};
