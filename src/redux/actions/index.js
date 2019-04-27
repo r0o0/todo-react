@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
   FETCH_TODO,
+  DELETE_TODO,
 } from '../../constants/action-types';
 import { db } from '../../firebase/firebaseConfig';
 
@@ -10,6 +11,7 @@ const setTodo = newTodo => ({
   payload: newTodo,
 });
 
+// create todo
 const addTodo = newTodo => async (dispatch) => {
   // send to redux
   await dispatch(setTodo(newTodo));
@@ -17,6 +19,7 @@ const addTodo = newTodo => async (dispatch) => {
   db.ref().child('todos').push().set(newTodo);
 };
 
+// fetch todo from database
 const fetchTodos = () => async (dispatch) => {
   db.ref().child('todos').on('value', (snapshot) => {
     dispatch({
@@ -26,7 +29,20 @@ const fetchTodos = () => async (dispatch) => {
   });
 };
 
+// delete todo
+const deleteTodo = (todoId, todoData) => async (dispatch) => {
+  await dispatch({
+    type: DELETE_TODO,
+    payload: {
+      id: todoId,
+      todo: todoData,
+    },
+  });
+  db.ref().child(`todos/${todoId}`).remove();
+};
+
 export {
   addTodo,
   fetchTodos,
+  deleteTodo,
 };

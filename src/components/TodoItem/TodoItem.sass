@@ -1,14 +1,23 @@
 @import '../../colors.sass'
 
 .todo_item
-  margin-bottom: 10px
-  font-size: 18px
-  &::before
-    content: ''
-    display: inline-block
-    width: 4px
-    height: 4px
-    margin-bottom: 4px
-    margin-right: 6px
-    border-radius: 50%
-    background: $placeholder
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  border-bottom: 1px solid $line
+  .todo_item__text
+    font-size: 18px
+    margin: 24px 0
+    &::before
+      content: ''
+      display: inline-block
+      width: 4px
+      height: 4px
+      margin-bottom: 4px
+      margin-right: 6px
+      border-radius: 50%
+      background: $placeholder
+
+  .todo_item__btn--delete
+    

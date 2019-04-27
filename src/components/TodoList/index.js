@@ -20,7 +20,7 @@ function TodoList(props) {
   }, []);
 
   // eslint-disable-next-line max-len
-  const renderItems = () => Object.entries(data).map(key => <TodoItem key={key[0]} todo={key[1].todo} />);
+  const renderItems = () => Object.entries(data).map(key => <TodoItem key={key[0]} id={key[0]} todo={key[1].todo} />);
 
   return (
     <ul className="todo_list">
