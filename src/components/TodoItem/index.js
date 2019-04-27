@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as actions from '../../redux/actions';
 // COMPONENTS
 import Button from '../Button';
@@ -10,26 +11,43 @@ import './TodoItem.sass';
 function TodoItem(props) {
   const {
     id,
-    todo,
+    data,
     deleteTodo,
   } = props;
-  const handleClick = (key, data) => {
-    console.log('delete todo:', key);
-    const todoData = data;
+
+  // delete todo
+  const handleDelete = (key, todo) => {
+    const todoData = todo;
     deleteTodo(key, todoData);
   };
 
   return (
     <li className="todo_item">
-      <p className="todo_item__text">{todo}</p>
-      <Button classname="todo_item__btn--delete" value="Delete" handleClick={() => handleClick(id, todo)} />
+      <Link
+        className="todo_item__wrapper"
+        to={{
+          pathname: `/todo/${id}`,
+          state: {
+            data,
+          },
+        }}
+      >
+        <p className="todo_item__text">{data.todo}</p>
+      </Link>
+      <Button classname="todo_item__btn--delete" value="Delete" handleClick={() => handleDelete(id, data)} />
     </li>
   );
 }
 
 TodoItem.propTypes = {
   id: PropTypes.string.isRequired,
-  todo: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    todo: PropTypes.string,
+    category: PropTypes.string,
+    description: PropTypes.string,
+    created_on: PropTypes.string,
+    due_on: PropTypes.string,
+  }).isRequired,
   deleteTodo: PropTypes.func.isRequired,
 };
 

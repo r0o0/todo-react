@@ -12,6 +12,8 @@ function TodoList(props) {
     data,
     fetchTodos,
   } = props;
+  console.log(props);
+  
   const callTodos = async () => {
     await fetchTodos();
   };
@@ -20,7 +22,7 @@ function TodoList(props) {
   }, []);
 
   // eslint-disable-next-line max-len
-  const renderItems = () => Object.entries(data).map(key => <TodoItem key={key[0]} id={key[0]} todo={key[1].todo} />);
+  const renderItems = () => Object.entries(data).map(key => <TodoItem key={key[0]} id={key[0]} data={key[1]} />);
 
   return (
     <ul className="todo_list">
@@ -34,12 +36,8 @@ TodoList.defaultProps = {
 };
 
 TodoList.propTypes = {
-  data: PropTypes.shape({
-    todo: PropTypes.string,
-    category: PropTypes.number,
-    created_at: PropTypes.string,
-    due_on: PropTypes.string,
-  }),
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object,
   fetchTodos: PropTypes.func.isRequired,
 };
 
