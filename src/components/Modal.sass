@@ -1,3 +1,18 @@
+
+=position($posX, $x, $posY, $y, $property: none)
+  @if $posX == 'top'
+    top: $x
+  @if $posX == 'bottom'
+    bottom: $x
+  @if $posY == 'left'
+    left: $y
+  @if $posY == 'center'
+    left: $y
+  @if $posY == 'right'
+    right: $y
+  // transform
+  transform: $property
+
 .modal
   position: absolute
   top: 0
@@ -7,9 +22,32 @@
   overflow-x: hidden
   overflow-y: auto
   background: rgba(28,28,30,.82)
-  .modal__header
-    height: 48px
-    line-height: 48px
+  .modal__container
+    position: absolute
+    width: initial
+  // modal positions
+  // top
+  .top-left
+    +position('top', 0, 'left', 0)
+  .top-center
+    +position('top', 0, 'center', 50%, translateX(-50%))
+  .top-right
+    +position('top', 0, 'right', 0)
+  // bottom
+  .bottom-left
+    +position('bottom', 0, 'left', 0)
+  .bottom-center
+    +position('bottom', 0, 'center', 50%, translateX(-50%))
+  .bottom-right
+    +position('bottom', 0, 'right', 0)
+  // center (default)
+  .center
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    .modal__header
+      height: 48px
+      line-height: 48px
 .hide
   display: none
 .show

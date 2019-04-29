@@ -12,8 +12,7 @@ function TodoList(props) {
     data,
     fetchTodos,
   } = props;
-  console.log(props);
-  
+
   const callTodos = async () => {
     await fetchTodos();
   };

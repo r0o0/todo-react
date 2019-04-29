@@ -12,12 +12,12 @@ import './Home.sass';
 function Home() {
   // state
   const [show, setShow] = useState(false);
-  // ref
-  const modal = React.createRef();
   const date = `${todayMonth} ${todayDate}`;
 
   // modal methods
-  const openModal = () => setShow(true);
+  const openModal = () => {
+    setShow(true);
+  };
   const handleShow = (newState) => {
     setShow(newState);
   };
@@ -31,7 +31,7 @@ function Home() {
         </h1>
         <TodoList />
         <Button value="Add todo" handleClick={openModal} />
-        <Modal show={show} render={<TodoForm />} ref={modal} newState={handleShow} />
+        <Modal show={show} render={<TodoForm />} newShowState={handleShow} position="bottom-center" />
       </header>
     </div>
   );
