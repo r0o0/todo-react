@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import Input from '../Input';
 import Button from '../Button';
+import DatePicker from '../DatePicker';
 // UTILS
 import { todayFullDate } from '../../utils/dateUtil';
 // ACTIONS
@@ -46,13 +47,15 @@ function TodoForm(props) {
   // TO CHANGE LATER
   const checkSubmit = () => {
   };
-
+  console.log(state);
+  
   return (
     <div className="form_wrapper">
       <form onSubmit={e => handleSubmit(e)}>
         <Input classname="todo_input" type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} ref={focusOnLoad} />
         <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
         <Button value="Today" handleClick={handleDate} />
+        <DatePicker date={newDate => setState({ due_on: newDate })} />
         <Button type="submit" value="Submit" handleClick={checkSubmit} />
       </form>
     </div>

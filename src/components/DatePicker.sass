@@ -1,0 +1,20 @@
+
+.date-picker__container
+  // react-dates css overrides
+  .CalendarDay__selected,
+  .CalendarDay__active,
+  .CalendarDay__selected:hover
+    background: #1c87e2
+    border: 1px solid #1584e2
+
+  .DateInput_input__focused
+    border-bottom: 2px solid transparent
+
+  // won't work in ie / edge
+  .SingleDatePickerInput
+    &:focus-within
+      outline: 0
+      border: 2px solid #1584e2
+
+  .SingleDatePickerInput_clearDate
+    display: none
