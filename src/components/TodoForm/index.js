@@ -51,7 +51,6 @@ function TodoForm(props) {
   const checkSubmit = () => {
     hideModal('', false);
   };
-  console.log(state);
 
   return (
     <div className="form_wrapper">
@@ -66,6 +65,7 @@ function TodoForm(props) {
 }
 
 TodoForm.propTypes = {
+  hideModal: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
 };
 

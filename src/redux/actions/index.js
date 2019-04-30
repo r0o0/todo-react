@@ -59,7 +59,7 @@ const showModal = (type, status) => (dispatch) => {
 
 const hideModal = (type, status) => (dispatch) => {
   dispatch({
-    type: SHOW_MODAL,
+    type: HIDE_MODAL,
     payload: {
       type,
       status,
