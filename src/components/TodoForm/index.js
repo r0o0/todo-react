@@ -13,6 +13,9 @@ import * as actions from '../../redux/actions';
 import './TodoForm.sass';
 
 function TodoForm(props) {
+  const {
+    hideModal,
+  } = props;
   // STATE
   const initialState = {
     todo: null,
@@ -39,23 +42,23 @@ function TodoForm(props) {
     addTodo(state);
   };
   // Date Button
-  const handleDate = () => {
+  const handleDate = (newDate) => {
     setState({
-      due_on: todayFullDate,
+      due_on: newDate,
     });
   };
   // TO CHANGE LATER
   const checkSubmit = () => {
+    hideModal('', false);
   };
   console.log(state);
-  
+
   return (
     <div className="form_wrapper">
       <form onSubmit={e => handleSubmit(e)}>
         <Input classname="todo_input" type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} ref={focusOnLoad} />
         <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
-        <Button value="Today" handleClick={handleDate} />
-        <DatePicker date={newDate => setState({ due_on: newDate })} />
+        <DatePicker date={newDate => handleDate(newDate)} />
         <Button type="submit" value="Submit" handleClick={checkSubmit} />
       </form>
     </div>

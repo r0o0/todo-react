@@ -1,10 +1,15 @@
 import {
+  // TODO
   ADD_TODO,
   FETCH_TODO,
   DELETE_TODO,
+  // MODAL
+  SHOW_MODAL,
+  HIDE_MODAL,
 } from '../../constants/action-types';
 import { db } from '../../firebase/firebaseConfig';
 
+// TODO
 // to view in redux
 const setTodo = newTodo => ({
   type: ADD_TODO,
@@ -41,8 +46,33 @@ const deleteTodo = (todoId, todoData) => async (dispatch) => {
   db.ref().child(`todos/${todoId}`).remove();
 };
 
+// MODAL
+const showModal = (type, status) => (dispatch) => {
+  dispatch({
+    type: SHOW_MODAL,
+    payload: {
+      type,
+      status,
+    },
+  });
+};
+
+const hideModal = (type, status) => (dispatch) => {
+  dispatch({
+    type: SHOW_MODAL,
+    payload: {
+      type,
+      status,
+    },
+  });
+};
+
 export {
+  // TODO
   addTodo,
   fetchTodos,
   deleteTodo,
+  // MODAL
+  showModal,
+  hideModal,
 };

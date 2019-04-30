@@ -3,8 +3,16 @@ const ADD_TODO = 'ADD_TODO';
 const FETCH_TODO = 'FETCH_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 
+// MODAL
+const SHOW_MODAL = 'SHOW_MODAL';
+const HIDE_MODAL = 'HIDE_MODAL';
+
 export {
+  // TODO
   ADD_TODO,
   FETCH_TODO,
   DELETE_TODO,
+  // MODAL
+  SHOW_MODAL,
+  HIDE_MODAL,
 };
