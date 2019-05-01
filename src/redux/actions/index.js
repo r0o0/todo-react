@@ -3,6 +3,7 @@ import {
   ADD_TODO,
   FETCH_TODO,
   DELETE_TODO,
+  UPDATE_TODO,
   // MODAL
   SHOW_MODAL,
   HIDE_MODAL,
@@ -46,6 +47,19 @@ const deleteTodo = (todoId, todoData) => async (dispatch) => {
   db.ref().child(`todos/${todoId}`).remove();
 };
 
+// update todo
+const updateTodo = (todoId, updated) => async (dispatch) => {
+  await dispatch({
+    type: UPDATE_TODO,
+    payload: {
+      [todoId]: {
+        data: updated,
+      },
+    },
+  });
+  db.ref().child(`todos/${todoId}`).update(updated);
+};
+
 // MODAL
 const showModal = (type, status) => (dispatch) => {
   dispatch({
@@ -72,6 +86,7 @@ export {
   addTodo,
   fetchTodos,
   deleteTodo,
+  updateTodo,
   // MODAL
   showModal,
   hideModal,

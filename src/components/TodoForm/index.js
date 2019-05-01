@@ -14,6 +14,8 @@ import './TodoForm.sass';
 
 function TodoForm(props) {
   const {
+    todoId,
+    actionType,
     hideModal,
   } = props;
   // STATE
@@ -27,7 +29,7 @@ function TodoForm(props) {
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
   console.log(state);
-  
+
   // HOOKS
   // When component loads focus on todo input
   const focusOnLoad = React.createRef();
@@ -39,8 +41,12 @@ function TodoForm(props) {
   // Submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { addTodo } = props;
-    addTodo(state);
+    const { addTodo, updateTodo } = props;
+    if (actionType === 'update') {
+      updateTodo(todoId, state);
+    } else {
+      addTodo(state);
+    }
   };
   // Date Button
   const handleDate = (newDate) => {
@@ -65,9 +71,15 @@ function TodoForm(props) {
   );
 }
 
+TodoForm.defaultProps = {
+  actionType: 'add',
+};
+
 TodoForm.propTypes = {
+  actionType: PropTypes.string,
   hideModal: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
 };
 
 export default connect(null, actions)(TodoForm);

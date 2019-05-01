@@ -2,6 +2,7 @@ import {
   ADD_TODO,
   FETCH_TODO,
   DELETE_TODO,
+  UPDATE_TODO,
 } from '../../constants/action-types';
 
 const data = (state = {}, action) => {
@@ -20,6 +21,11 @@ const data = (state = {}, action) => {
       return {
         ...state,
         archive: action.payload,
+      };
+    case UPDATE_TODO:
+      return {
+        ...state,
+        updated: action.payload,
       };
     default:
       return state;
