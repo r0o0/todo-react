@@ -7,14 +7,19 @@
     background: #1c87e2
     border: 1px solid #1584e2
 
+  // input
+  .DateInput_input
+    text-transform: uppercase
   .DateInput_input__focused
     border-bottom: 2px solid transparent
 
   // won't work in ie / edge
   .SingleDatePickerInput
+    // visibility: hidden
     &:focus-within
       outline: 0
       border: 2px solid #1584e2
-
-  .SingleDatePickerInput_clearDate
-    display: none
+  
+  // adds space between weekdays and calender days
+  .ClearMonth_table
+    margin-top: 7px

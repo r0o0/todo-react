@@ -27,17 +27,20 @@ function DatePicker(props) {
   return (
     <div className="date-picker__container">
       <SingleDatePicker
-        showClearDate
-        numberOfMonths={1}
+        id="date-picker"
+        // input
         date={state.date}
         onDateChange={date => handleDate({ date })}
         focused={state.focused}
         onFocusChange={({ focused }) => setState({ focused })}
+        displayFormat={() => 'DD.MMM.YYYY'}
+        // customInputIcon - PropTypes.nodes (custom icon for date picker)
+        // calendar
+        numberOfMonths={1}
+        monthFormat="YYYY MMMM" // changes calendar's month and year format
         openDirection="up"
-        displayFormat={() => 'DD/MM/YYYY'}
         keepOpenOnDateSelect={false}
         hideKeyboardShortcutsPanel
-        id="date-picker"
       />
     </div>
   );
