@@ -20,7 +20,6 @@ function DatePicker(props) {
     setState({ date: newDate.date });
 
     // pass date to parent component
-    // eslint-disable-next-line no-underscore-dangle
     date(newDate.date._d.toString());
   };
 
