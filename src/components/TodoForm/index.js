@@ -6,7 +6,7 @@ import Input from '../Input';
 import Button from '../Button';
 import DatePicker from '../DatePicker';
 // UTILS
-import { todayFullDate } from '../../utils/dateUtil';
+import moment from 'moment';
 // ACTIONS
 import * as actions from '../../redux/actions';
 // CSS
@@ -21,12 +21,13 @@ function TodoForm(props) {
     todo: null,
     category: null,
     description: null,
-    due_on: null,
-    created_on: todayFullDate,
+    due_on: moment()._d.toString(),
+    created_on: moment()._d.toString(),
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
-
+  console.log(state);
+  
   // HOOKS
   // When component loads focus on todo input
   const focusOnLoad = React.createRef();
