@@ -1,6 +1,7 @@
 import {
   // TODO
   ADD_TODO,
+  FETCH_TODOS,
   FETCH_TODO,
   DELETE_TODO,
   UPDATE_TODO,
@@ -29,8 +30,17 @@ const addTodo = newTodo => async (dispatch) => {
 const fetchTodos = () => async (dispatch) => {
   db.ref().child('todos').on('value', (snapshot) => {
     dispatch({
-      type: FETCH_TODO,
+      type: FETCH_TODOS,
       payload: snapshot.val(),
+    });
+  });
+};
+
+const fetchTodo = todoId => async (dispatch) => {
+  db.ref().child('todos').on('value', (snapshot) => {
+    dispatch({
+      type: FETCH_TODO,
+      payload: snapshot.child(todoId).val(),
     });
   });
 };
@@ -85,6 +95,7 @@ export {
   // TODO
   addTodo,
   fetchTodos,
+  fetchTodo,
   deleteTodo,
   updateTodo,
   // MODAL

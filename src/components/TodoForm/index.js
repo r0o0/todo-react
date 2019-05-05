@@ -1,12 +1,11 @@
 import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import moment from 'moment';
 // COMPONENTS
 import Input from '../Input';
 import Button from '../Button';
 import DatePicker from '../DatePicker';
-// UTILS
-import moment from 'moment';
 // ACTIONS
 import * as actions from '../../redux/actions';
 // CSS

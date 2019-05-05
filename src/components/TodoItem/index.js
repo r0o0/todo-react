@@ -13,6 +13,7 @@ function TodoItem(props) {
     id,
     data,
     deleteTodo,
+    fetchTodo,
   } = props;
 
   // delete todo
@@ -21,17 +22,14 @@ function TodoItem(props) {
     deleteTodo(key, todoData);
   };
 
+  console.log('todoItem', data);
+  // const setData = () => {
+  //   fetch
+  // };
+
   return (
     <li className="todo_item">
-      <Link
-        className="todo_item__wrapper"
-        to={{
-          pathname: `/todo/${id}`,
-          state: {
-            data,
-          },
-        }}
-      >
+      <Link className="todo_item__wrapper" to={`/todo/${id}`}>
         <p className="todo_item__text">{data.todo}</p>
       </Link>
       <Button classname="todo_item__btn--delete" value="Delete" handleClick={() => handleDelete(id, data)} />

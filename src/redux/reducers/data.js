@@ -1,5 +1,6 @@
 import {
   ADD_TODO,
+  FETCH_TODOS,
   FETCH_TODO,
   DELETE_TODO,
   UPDATE_TODO,
@@ -12,10 +13,15 @@ const data = (state = {}, action) => {
         ...state,
         new_todo: action.payload,
       };
-    case FETCH_TODO:
+    case FETCH_TODOS:
       return {
         ...state,
         todos: action.payload,
+      };
+    case FETCH_TODO:
+      return {
+        ...state,
+        todo: action.payload,
       };
     case DELETE_TODO:
       return {
