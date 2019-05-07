@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable camelcase */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
@@ -6,6 +7,10 @@ import * as actions from '../../redux/actions';
 import Button from '../Button';
 import Modal from '../Modal';
 import TodoForm from '../TodoForm';
+// CSS
+import './TodoDetail.sass';
+// UTILS
+import { isDateToday } from '../../utils/dateUtil';
 
 function TodoDetail(props) {
   const {
@@ -27,13 +32,23 @@ function TodoDetail(props) {
   } = data;
 
   return (
-    <main className="todo_detail__main">
-      <h1 className="todo_detail__title">{todo}</h1>
-      <h2 className="todo_detail__category">{category}</h2>
-      <h3>Description</h3>
-      <p>{description}</p>
-      <h3>Due</h3>
-      <p>{due_on}</p>
+    <div className="todo-detail__content">
+      <div className="todo-detail__content-header">
+        <h1 className="todo-detail__content-header__title">
+          <span className="a11y-hidden">Title</span>
+          {todo}
+        </h1>
+        <h2 className="todo-detail__content-header__category">
+          <span className="a11y-hidden">Category</span>
+          {category}
+        </h2>
+      </div>
+      <div className="todo-detail__content-main">
+        <h3 className="todo-detail__content-main__title">Description</h3>
+        <p className="todo-detail__content-main__text">{description}</p>
+        <h3 className="todo-detail__content-main__title">Due</h3>
+        <p className="todo-detail__content-main__text">{isDateToday(due_on)}</p>
+      </div>
       <Button value="Edit" handleClick={openModal} />
       <Modal
         // show={show}
@@ -41,7 +56,7 @@ function TodoDetail(props) {
         // newShowState={handleShow}
         position="bottom-center"
       />
-    </main>
+    </div>
   );
 }
 

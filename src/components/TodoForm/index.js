@@ -1,13 +1,14 @@
 import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import moment from 'moment';
 // COMPONENTS
 import Input from '../Input';
 import Button from '../Button';
 import DatePicker from '../DatePicker';
 // ACTIONS
 import * as actions from '../../redux/actions';
+// UTILS
+import { todayFullDate } from '../../utils/dateUtil';
 // CSS
 import './TodoForm.sass';
 
@@ -22,8 +23,8 @@ function TodoForm(props) {
     todo: null,
     category: null,
     description: null,
-    due_on: moment()._d.toString(),
-    created_on: moment()._d.toString(),
+    due_on: todayFullDate,
+    created_on: todayFullDate,
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
