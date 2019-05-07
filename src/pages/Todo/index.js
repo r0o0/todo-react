@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 // COMPONENTS
 import TodoDetail from '../../components/TodoDetail';
+// CSS
+import './Todo.sass';
 
 function Todo(props) {
   const {
@@ -33,11 +35,13 @@ function Todo(props) {
   }, []);
 
   return (
-    <div className="todo_detail">
-      <header className="todo_detail__header">
+    <div className="todo-detail">
+      <header className="todo-detail__header">
         <Link to="/">Back</Link>
       </header>
-      {!isObjectEmpty() ? <TodoDetail todoId={todoId} data={data.todo} /> : null}
+      <main className="todo-detail__main">
+        {!isObjectEmpty() ? <TodoDetail todoId={todoId} data={data.todo} /> : null}
+      </main>
     </div>
   );
 }

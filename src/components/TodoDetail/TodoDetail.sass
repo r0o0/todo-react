@@ -1,0 +1,39 @@
+@import '../../colors.sass'
+
+h1, h2, h3, h4, h5, h6, p
+  margin: 0
+  line-height: 1
+
+.todo-detail__content
+  &-header
+    display: flex
+    flex-flow: column wrap
+    padding: 24px 0
+    &__title
+      margin-bottom: 16px
+      font-size: 28px
+      font-weight: 700
+      text-transform: uppercase
+    &__category
+      order: -1
+      width: fit-content
+      margin-bottom: 12px
+      padding: 5px 8px
+      border-radius: 16px
+      font-size: 14px
+      font-weight: 600
+      line-height: 1
+      color: $dark-text
+      border: 1px solid $placeholder
+      &::first-letter
+        text-transform: uppercase
+  &-main
+    &__title
+      margin-bottom: 8px
+      font-size: 15px
+      font-weight: 700
+      color: $dark-text
+    &__text
+      margin-bottom: 16px
+      font-size: 17px
+      font-weight: 400
