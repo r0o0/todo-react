@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 // COMPONENTS
 import TodoList from '../../components/TodoList';
-import Button from '../../components/Button';
-import Modal from '../../components/Modal';
+import Button from '../../components/shared/Button';
+import Modal from '../../components/shared/Modal';
 import TodoForm from '../../components/TodoForm';
 // UTILS
 import { todayDate, todayMonth } from '../../utils/dateUtil';

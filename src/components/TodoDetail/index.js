@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 // COMPONENTS
-import Button from '../Button';
-import Modal from '../Modal';
+import Button from '../shared/Button';
+import Modal from '../shared/Modal';
 import TodoForm from '../TodoForm';
 // CSS
 import './TodoDetail.sass';

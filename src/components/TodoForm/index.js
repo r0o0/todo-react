@@ -2,10 +2,10 @@ import React, { useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // COMPONENTS
-import Input from '../Input';
-import Button from '../Button';
-import Textarea from '../Textarea';
-import DatePicker from '../DatePicker';
+import Input from '../shared/Input';
+import Button from '../shared/Button';
+import Textarea from '../shared/Textarea';
+import DatePicker from '../shared/DatePicker';
 // ACTIONS
 import * as actions from '../../redux/actions';
 // UTILS

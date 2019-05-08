@@ -4,7 +4,7 @@ import moment from 'moment';
 const todayFullDate = moment().format('llll');
 const todaySimpleDate = moment().format('D');
 // const yesterday = moment().subtract(1, todayFullDate).calendar();
-const yesterday = moment().subtract(1, 'days').calendar();
+// const yesterday = moment().subtract(1, 'days').calendar();
 
 const isDateToday = (toCompare) => {
   let render;
@@ -14,7 +14,7 @@ const isDateToday = (toCompare) => {
     render = 'Today';
   } else if (date - todaySimpleDate === -1) {
     render = 'Yesterday';
-  } else if (date - todaySimpleDate ===  1) {
+  } else if (date - todaySimpleDate === 1) {
     render = 'Tomorrow';
   } else {
     render = toCompare.substr(0, 16);

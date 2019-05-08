@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../redux/actions';
 // COMPONENTS
-import Button from '../Button';
+import Button from '../shared/Button';
 // CSS
 import './TodoItem.sass';
 
@@ -13,7 +13,6 @@ function TodoItem(props) {
     id,
     data,
     deleteTodo,
-    fetchTodo,
   } = props;
 
   // delete todo
@@ -21,11 +20,6 @@ function TodoItem(props) {
     const todoData = todo;
     deleteTodo(key, todoData);
   };
-
-  console.log('todoItem', data);
-  // const setData = () => {
-  //   fetch
-  // };
 
   return (
     <li className="todo_item">
