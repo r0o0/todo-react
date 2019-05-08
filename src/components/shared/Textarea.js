@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// CSS
+import './Textarea.sass';
 
 function Textarea(props) {
   const {
     label,
     value,
     placeholder,
-    rows,
-    cols,
-    min,
-    max,
-    isSpellcheck,
     isRequired,
-    autocomplete,
   } = props;
 
   const handleValue = (newValue) => {
@@ -20,50 +16,32 @@ function Textarea(props) {
   };
 
   return (
-    <label className="" htmlFor={label}>
+    <div className="label" id={label}>
       {label}
-      <textarea
+      <div
+        className="textarea"
         id={label}
-        name={label}
-        placeholder={placeholder}
-        required={isRequired}
-        // options
-        rows={rows}
-        cols={cols}
-        minLength={min}
-        maxLength={max}
-        spellCheck={isSpellcheck}
-        autoComplete={autocomplete}
-        // value on change
+        role="textbox"
+        contentEditable="true"
+        aria-labelledby={label}
+        aria-placeholder={placeholder}
+        aria-required={isRequired}
+        aria-multiline="true"
         onChange={e => handleValue(e.target.value)}
       />
-    </label>
+    </div>
   );
 }
 
 Textarea.defaultProps = {
   placeholder: '',
-  // options
-  rows: '',
-  cols: '',
-  min: '',
-  max: '',
   isRequired: false,
-  autocomplete: 'off',
-  isSpellcheck: true,
 };
 
 Textarea.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   isRequired: PropTypes.bool,
-  // options
-  rows: PropTypes.string,
-  cols: PropTypes.string,
-  min: PropTypes.string,
-  max: PropTypes.string,
-  isSpellcheck: PropTypes.bool,
-  autocomplete: PropTypes.string,
   // value
   value: PropTypes.func.isRequired,
 };
