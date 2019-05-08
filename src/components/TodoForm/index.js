@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import Input from '../Input';
 import Button from '../Button';
+import Textarea from '../Textarea';
 import DatePicker from '../DatePicker';
 // ACTIONS
 import * as actions from '../../redux/actions';
@@ -64,6 +65,7 @@ function TodoForm(props) {
       <form onSubmit={e => handleSubmit(e)}>
         <Input classname="todo_input" type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} ref={focusOnLoad} />
         <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
+        <Textarea label="description" value={newValue => setState({ description: newValue })} />
         <DatePicker date={newDate => handleDate(newDate)} />
         <Button type="submit" value="Submit" handleClick={checkSubmit} />
       </form>
@@ -76,6 +78,7 @@ TodoForm.defaultProps = {
 };
 
 TodoForm.propTypes = {
+  todoId: PropTypes.string.isRequired,
   actionType: PropTypes.string,
   hideModal: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
