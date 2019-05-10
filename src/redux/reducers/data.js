@@ -6,7 +6,12 @@ import {
   UPDATE_TODO,
 } from '../../constants/action-types';
 
-const data = (state = {}, action) => {
+const initialState = {
+  todos: {},
+  todo: {},
+};
+
+const data = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {

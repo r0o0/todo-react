@@ -14,7 +14,6 @@ import { isDateToday } from '../../utils/dateUtil';
 
 function TodoDetail(props) {
   const {
-    // fetchTodo,
     todoId,
     data,
     showModal,

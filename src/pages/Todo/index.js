@@ -20,7 +20,7 @@ function Todo(props) {
 
   // check if data object is empty
   const isObjectEmpty = () => {
-    if (Object.entries(data).length === 0 && data.constructor === Object) {
+    if (Object.entries(data.todo).length === 0 && data.constructor === Object) {
       return true;
     }
     return false;

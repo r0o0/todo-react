@@ -19,6 +19,7 @@ function TodoForm(props) {
     actionType,
     hideModal,
   } = props;
+
   // STATE
   const initialState = {
     todo: null,
@@ -29,7 +30,6 @@ function TodoForm(props) {
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
-  console.log(state);
 
   // HOOKS
   // When component loads focus on todo input
@@ -74,11 +74,12 @@ function TodoForm(props) {
 }
 
 TodoForm.defaultProps = {
+  todoId: '',
   actionType: 'add',
 };
 
 TodoForm.propTypes = {
-  todoId: PropTypes.string.isRequired,
+  todoId: PropTypes.string,
   actionType: PropTypes.string,
   hideModal: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
