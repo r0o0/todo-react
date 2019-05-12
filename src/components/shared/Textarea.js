@@ -11,8 +11,13 @@ function Textarea(props) {
     isRequired,
   } = props;
 
+  // ref
+  const textInput = React.createRef();
+
   const handleValue = (newValue) => {
-    value(newValue.trim());
+    if (newValue !== null) {
+      value(newValue);
+    }
   };
 
   return (
@@ -21,13 +26,14 @@ function Textarea(props) {
       <div
         className="textarea"
         id={label}
+        ref={textInput}
         role="textbox"
         contentEditable="true"
         aria-labelledby={label}
         aria-placeholder={placeholder}
         aria-required={isRequired}
         aria-multiline="true"
-        onChange={e => handleValue(e.target.value)}
+        onInput={() => handleValue(textInput.current.innerHTML)}
       />
     </div>
   );

@@ -30,7 +30,8 @@ function TodoForm(props) {
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
-
+  console.log(state);
+  
   // HOOKS
   // When component loads focus on todo input
   const focusOnLoad = React.createRef();
