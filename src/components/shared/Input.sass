@@ -15,12 +15,17 @@
 input[type=text]
   font-size: 15px
   line-height: 16px
+  outline: none
 
 // Label
 .label
   display: block
-  margin-bottom: 16px
+  // margin-bottom: 16px
   font-size: 16px
   color: $light
   &::first-letter
     text-transform: uppercase
+
+// error
+.input--error
+  border: 2px solid $error

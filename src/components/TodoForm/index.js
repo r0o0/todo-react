@@ -18,6 +18,8 @@ function TodoForm(props) {
     todoId,
     actionType,
     hideModal,
+    // actions
+    modal,
   } = props;
 
   // STATE
@@ -30,14 +32,17 @@ function TodoForm(props) {
   };
   const reducer = (state, newState) => ({ ...state, ...newState });
   const [state, setState] = useReducer(reducer, initialState);
-  console.log(state);
-  
+  // console.log('form', state);
+
   // HOOKS
   // When component loads focus on todo input
-  const focusOnLoad = React.createRef();
   useEffect(() => {
-    window.addEventListener('load', () => focusOnLoad.current.focus());
-  });
+    console.log(modal);
+    const target = document.querySelectorAll('.input')[0];
+    if (modal.type === 'todo form' && modal.status) {
+      target.focus();
+    }
+  }, [modal.status]);
 
   // EVENTS
   // Submit form
@@ -64,8 +69,12 @@ function TodoForm(props) {
   return (
     <div className="form_wrapper">
       <form onSubmit={e => handleSubmit(e)}>
-        <Input classname="todo_input" type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} ref={focusOnLoad} />
-        <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
+        <div className="form__input">
+          <Input type="text" name="todo" label="Todo" placeholder="Add a todo" autocomplete="off" value={(newValue) => { setState({ todo: newValue }); }} />
+        </div>
+        <div className="form__input">
+          <Input type="text" name="category" label="Category" placeholder="Add a category" autocomplete="off" value={(newValue) => { setState({ category: newValue }); }} />
+        </div>
         <Textarea label="description" value={newValue => setState({ description: newValue })} />
         <DatePicker date={newDate => handleDate(newDate)} />
         <Button type="submit" value="Submit" handleClick={checkSubmit} />
@@ -85,6 +94,14 @@ TodoForm.propTypes = {
   hideModal: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
   updateTodo: PropTypes.func.isRequired,
+  modal: PropTypes.shape({
+    type: PropTypes.string,
+    status: PropTypes.bool,
+  }).isRequired,
 };
 
-export default connect(null, actions)(TodoForm);
+const mapStateToProps = store => ({
+  modal: store.modal,
+});
+
+export default connect(mapStateToProps, actions)(TodoForm);

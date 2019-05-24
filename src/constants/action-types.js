@@ -9,6 +9,12 @@ const UPDATE_TODO = 'UPDATE_TODO';
 const SHOW_MODAL = 'SHOW_MODAL';
 const HIDE_MODAL = 'HIDE_MODAL';
 
+// ERROR
+const IS_ERROR = 'IS_ERROR';
+
+// ETC
+const IS_FOCUSED = 'IS_FOCUSED';
+
 export {
   // TODO
   ADD_TODO,
@@ -19,4 +25,8 @@ export {
   // MODAL
   SHOW_MODAL,
   HIDE_MODAL,
+  // ERROR
+  IS_ERROR,
+  // ETC
+  IS_FOCUSED,
 };

@@ -8,6 +8,10 @@ import {
   // MODAL
   SHOW_MODAL,
   HIDE_MODAL,
+  // ERROR
+  IS_ERROR,
+  // ETC
+  IS_FOCUSED,
 } from '../../constants/action-types';
 import { db } from '../../firebase/firebaseConfig';
 
@@ -91,6 +95,29 @@ const hideModal = (type, status) => (dispatch) => {
   });
 };
 
+// ERROR
+const isError = (type, status) => (dispatch) => {
+  dispatch({
+    type: IS_ERROR,
+    payload: {
+      type,
+      status,
+    },
+  });
+};
+
+// ETC
+const isFocused = (type, status, category) => (dispatch) => {
+  dispatch({
+    type: IS_FOCUSED,
+    payload: {
+      type,
+      status,
+      category,
+    },
+  });
+};
+
 export {
   // TODO
   addTodo,
@@ -101,4 +128,8 @@ export {
   // MODAL
   showModal,
   hideModal,
+  // ERROR
+  isError,
+  // ETC
+  isFocused,
 };
